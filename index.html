@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ATMクリッカー</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>ATMクリッカー</h1>
+
+        <div class="balance-info">
+            <p>所持金: <span id="currentMoney">0</span>円</p>
+            <p>1秒あたりの収入 (CPS): <span id="cps">0</span>円</p>
+        </div>
+
+        <div class="atm-area">
+            <div class="atm-drawing-container">
+                <div class="atm-body">
+                    <div class="atm-screen">
+                        <p class="screen-text">残高確認</p>
+                        <p class="screen-text">取引開始</p>
+                    </div>
+                    <div class="atm-card-slot"></div>
+                    <div class="atm-keypad">
+                        <div class="key-row">
+                            <div class="key">1</div><div class="key">2</div><div class="key">3</div>
+                        </div>
+                        <div class="key-row">
+                            <div class="key">4</div><div class="key">5</div><div class="key">6</div>
+                        </div>
+                        <div class="key-row">
+                            <div class="key">7</div><div class="key">8</div><div class="key">9</div>
+                        </div>
+                        <div class="key-row">
+                            <div class="key">C</div><div class="key">0</div><div class="key">E</div>
+                        </div>
+                    </div>
+                    <div class="atm-cash-dispenser"></div>
+                </div>
+            </div>
+            <button id="atmButton">ATMをクリック！</button>
+            <p class="click-info">クリックで<span id="clickValue">1</span>円</p>
+        </div>
+
+        <hr>
+
+        <h2>アップグレード</h2>
+        <div class="upgrades-area">
+            <div class="upgrade-item">
+                <h3>銀行員 (自動収入)</h3>
+                <p>価格: <span id="bankerCost">10</span>円</p>
+                <p>効果: 1秒あたり<span id="bankerEffect">1</span>円増加</p>
+                <button id="buyBanker">購入</button>
+            </div>
+
+            <div class="upgrade-item">
+                <h3>ATM増設 (クリック収入UP)</h3>
+                <p>価格: <span id="atmUpgradeCost">50</span>円</p>
+                <p>効果: クリックごとに<span id="atmUpgradeEffect">1</span>円増加</p>
+                <button id="buyAtmUpgrade">購入</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
