@@ -7,63 +7,62 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="container">
+    <header>
         <h1>ATMクリッカー</h1>
-
-        <div class="balance-info">
-            <p>所持金: <span id="currentMoney">0</span>円</p>
-            <p>1秒あたりの収入 (CPS): <span id="cps">0</span>円</p>
-        </div>
-
-        <div class="atm-area">
-            <div class="atm-drawing-container">
-                <div class="atm-body">
-                    <div class="atm-screen">
-                        <p class="screen-text">残高確認</p>
-                        <p class="screen-text">取引開始</p>
-                    </div>
-                    <div class="atm-card-slot"></div>
-                    <div class="atm-keypad">
-                        <div class="key-row">
-                            <div class="key">1</div><div class="key">2</div><div class="key">3</div>
-                        </div>
-                        <div class="key-row">
-                            <div class="key">4</div><div class="key">5</div><div class="key">6</div>
-                        </div>
-                        <div class="key-row">
-                            <div class="key">7</div><div class="key">8</div><div class="key">9</div>
-                        </div>
-                        <div class="key-row">
-                            <div class="key">C</div><div class="key">0</div><div class="key">E</div>
-                        </div>
-                    </div>
-                    <div class="atm-cash-dispenser"></div>
+        <p class="subtitle">ATMをクリックして金を稼ごう!</p>
+    </header>
+    
+    <div class="container">
+        <div class="game-area">
+            <div class="particles" id="particles"></div>
+            <div class="atm">
+                <div class="atm-screen">
+                    <div class="cash-display" id="cash-display">¥0</div>
+                </div>
+                <div class="buttons">
+                    <button class="atm-button" id="click-button">ATMをクリック</button>
                 </div>
             </div>
-            <button id="atmButton">ATMをクリック！</button>
-            <p class="click-info">クリックで<span id="clickValue">1</span>円</p>
+            <div class="meters">
+                <div>クリックごと: <span id="click-value">¥1</span></div>
+                <div>1秒ごと: <span id="mps-value">¥0</span></div>
+            </div>
         </div>
-
-        <hr>
-
-        <h2>アップグレード</h2>
-        <div class="upgrades-area">
-            <div class="upgrade-item">
-                <h3>銀行員 (自動収入)</h3>
-                <p>価格: <span id="bankerCost">10</span>円</p>
-                <p>効果: 1秒あたり<span id="bankerEffect">1</span>円増加</p>
-                <button id="buyBanker">購入</button>
-            </div>
-
-            <div class="upgrade-item">
-                <h3>ATM増設 (クリック収入UP)</h3>
-                <p>価格: <span id="atmUpgradeCost">50</span>円</p>
-                <p>効果: クリックごとに<span id="atmUpgradeEffect">1</span>円増加</p>
-                <button id="buyAtmUpgrade">購入</button>
-            </div>
+        
+        <div class="shop">
+            <h2>ATMアップグレード</h2>
+            <div id="upgrades-container"></div>
         </div>
     </div>
-
+    
+    <div class="stats">
+        <h2>ゲーム統計</h2>
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-label">総獲得現金</div>
+                <div class="stat-value" id="total-cash">¥0</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-label">総クリック数</div>
+                <div class="stat-value" id="total-clicks">0</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-label">購入したアップグレード</div>
+                <div class="stat-value" id="upgrades-bought">0</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-label">プレイ時間</div>
+                <div class="stat-value" id="active-time">0秒</div>
+            </div>
+        </div>
+        <button class="reset-btn" id="reset-btn">ゲームリセット</button>
+    </div>
+    
+    <div class="achievement" id="achievement">
+        <div class="achievement-title">新しい実績を解除！</div>
+        <div class="achievement-text" id="achievement-text"></div>
+    </div>
+    
     <script src="script.js"></script>
 </body>
 </html>
