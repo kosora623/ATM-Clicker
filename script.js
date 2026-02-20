@@ -188,10 +188,15 @@ function buyUpgrade(upgradeId) {
         // 価格上昇: 基本価格 * 1.15の購入回数乗
         upgrade.cost = Math.floor(upgrade.baseCost * Math.pow(1.15, upgrade.amount));
         
-        // カードの表示を更新（特にコスト）
-        const costElement = document.querySelector(`.upgrade-card[data-id="${upgradeId}"] .upgrade-cost`);
+        // カードの表示を更新
+        const card = document.querySelector(`.upgrade-card[data-id="${upgradeId}"]`);
+        const costElement = card?.querySelector(`.upgrade-cost`);
         if (costElement) {
             costElement.textContent = `¥${formatNumber(upgrade.cost)}`;
+        }
+        const descElement = card?.querySelector('.upgrade-description');
+        if (descElement) {
+            descElement.textContent = `${upgrade.description} (${upgrade.amount}個所有)`;
         }
 
         updateDisplay();
@@ -326,6 +331,7 @@ function resetGame() {
         
         updateDisplay();
         createUpgradeCards(); // カードを再描画して最新のコストを表示
+        saveGame(); // リセット後に保存
     }
 }
 
@@ -376,6 +382,7 @@ function loadGame() {
 
 // ゲームの初期化
 function init() {
+    loadGame();
     createParticles();
     createUpgradeCards();
     updateDisplay();
@@ -385,6 +392,9 @@ function init() {
     
     // 自動での現金生成（1秒ごと）
     setInterval(autoGenerateMoney, 1000);
+    
+    // 自動セーブ（30秒ごと）
+    setInterval(saveGame, 30000);
     
     // 実績表示のクリックで非表示
     document.addEventListener('click', () => {
@@ -396,3 +406,6 @@ function init() {
 
 // ゲーム開始
 window.addEventListener('load', init);
+
+// ページを閉じる前に保存
+window.addEventListener('beforeunload', saveGame);
