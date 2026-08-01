@@ -1,0 +1,402 @@
+:root {
+    --primary: #1a237e;
+    --secondary: #283593;
+    --accent: #3949ab;
+    --light: #e3f2fd;
+    --dark: #0d1b2a;
+    --success: #4caf50;
+    --warning: #ff9800;
+    --danger: #f44336;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background: linear-gradient(135deg, var(--dark), #1a237e);
+    color: var(--light);
+    min-height: 100vh;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow-x: hidden;
+}
+
+.container {
+    width: 100%;
+    max-width: 1200px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 25px;
+    margin-top: 20px;
+}
+
+@media (max-width: 768px) {
+    .container {
+        grid-template-columns: 1fr;
+    }
+}
+
+header {
+    text-align: center;
+    margin-bottom: 20px;
+    width: 100%;
+}
+
+h1 {
+    font-size: 3.5rem;
+    background: linear-gradient(to right, #ff8a00, #e52e71);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: 0 2px 10px rgba(0,0,0,0.2);
+    margin-bottom: 10px;
+    letter-spacing: 1px;
+}
+
+.subtitle {
+    font-size: 1.2rem;
+    color: #b3e5fc;
+    margin-bottom: 20px;
+}
+
+.game-area {
+    background: rgba(26, 35, 126, 0.7);
+    border-radius: 20px;
+    padding: 25px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 500px;
+    position: relative;
+    overflow: hidden;
+}
+
+.atm {
+    width: 300px;
+    height: 400px;
+    background: linear-gradient(145deg, #37474f, #263238);
+    border-radius: 15px;
+    position: relative;
+    box-shadow: 
+        0 10px 20px rgba(0,0,0,0.3),
+        inset 0 0 15px rgba(0,0,0,0.5);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    transition: transform 0.2s;
+}
+
+.atm:hover {
+    transform: scale(1.03);
+}
+
+.atm-screen {
+    flex: 1;
+    background: #212121;
+    border-radius: 10px;
+    margin: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    position: relative;
+}
+
+.atm-screen::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 30px;
+    background: linear-gradient(to right, #00bcd4, #4db6ac);
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+.atm-screen::after {
+    content: "ATM";
+    position: absolute;
+    top: 50px; /* 画面上部から少し下に配置 */
+    left: 50%;
+    transform: translateX(-50%); /* 中央寄せ */
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: #00bcd4;
+    text-shadow: 0 0 10px rgba(0, 188, 212, 0.5);
+}
+
+.cash-display {
+    font-size: 2.8rem;
+    font-weight: bold;
+    color: #4caf50;
+    text-shadow: 0 0 10px rgba(76, 175, 80, 0.7);
+    /* margin-topを削除して、親要素の中央配置を活かします */
+    margin: 0; 
+    text-align: center;
+    width: 100%;
+}
+
+.meters {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    margin-top: 10px;
+    font-size: 1.1rem;
+    color: #b3e5fc;
+}
+
+.buttons {
+    display: flex;
+    gap: 15px;
+    margin-top: 15px;
+}
+
+.atm-button {
+    flex: 1;
+    height: 50px;
+    background: linear-gradient(to bottom, #546e7a, #37474f);
+    border: none;
+    border-radius: 8px;
+    color: white;
+    font-weight: bold;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: all 0.2s;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+.atm-button:hover {
+    background: linear-gradient(to bottom, #607d8b, #455a64);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(0,0,0,0.3);
+}
+
+.atm-button:active {
+    transform: translateY(1px);
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+
+.shop {
+    background: rgba(26, 35, 126, 0.7);
+    border-radius: 20px;
+    padding: 25px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    overflow-y: auto;
+    max-height: 500px;
+}
+
+.shop h2 {
+    text-align: center;
+    font-size: 2rem;
+    color: #bb86fc;
+    margin-bottom: 15px;
+    border-bottom: 2px solid #3949ab;
+    padding-bottom: 10px;
+}
+
+.upgrade-card {
+    background: rgba(40, 53, 147, 0.6);
+    border-radius: 12px;
+    padding: 15px;
+    transition: all 0.3s;
+    border: 1px solid rgba(57, 73, 171, 0.3);
+}
+
+.upgrade-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    border-color: rgba(57, 73, 171, 0.6);
+}
+
+.upgrade-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.upgrade-name {
+    font-size: 1.3rem;
+    color: #bb86fc;
+    font-weight: bold;
+}
+
+.upgrade-cost {
+    font-size: 1.1rem;
+    color: #ffeb3b;
+}
+
+.upgrade-description {
+    color: #b3e5fc;
+    margin-bottom: 10px;
+    font-size: 0.95rem;
+}
+
+.upgrade-progress {
+    height: 8px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 4px;
+    overflow: hidden;
+    margin-bottom: 10px;
+}
+
+.upgrade-progress-bar {
+    height: 100%;
+    background: linear-gradient(to right, #4caf50, #8bc34a);
+    border-radius: 4px;
+    transition: width 0.3s;
+}
+
+.upgrade-buttons {
+    display: flex;
+    gap: 10px;
+}
+
+.buy-button {
+    flex: 1;
+    padding: 8px;
+    background: linear-gradient(to bottom, #3949ab, #283593);
+    border: none;
+    border-radius: 6px;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.buy-button:hover {
+    background: linear-gradient(to bottom, #5c6bc0, #3949ab);
+}
+
+.buy-button:disabled {
+    background: #616161;
+    cursor: not-allowed;
+}
+
+.stats {
+    background: rgba(26, 35, 126, 0.7);
+    border-radius: 20px;
+    padding: 25px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    margin-top: 20px;
+    width: 100%;
+}
+
+.stats h2 {
+    text-align: center;
+    font-size: 1.8rem;
+    color: #bb86fc;
+    margin-bottom: 15px;
+    border-bottom: 2px solid #3949ab;
+    padding-bottom: 10px;
+}
+
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+}
+
+.stat-card {
+    background: rgba(40, 53, 147, 0.6);
+    border-radius: 12px;
+    padding: 15px;
+    text-align: center;
+}
+
+.stat-value {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #4caf50;
+    margin: 10px 0;
+}
+
+.stat-label {
+    color: #b3e5fc;
+    font-size: 1.1rem;
+}
+
+.reset-btn {
+    background: linear-gradient(to right, #ff5252, #ff1744);
+    color: white;
+    border: none;
+    padding: 12px 25px;
+    font-size: 1.1rem;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s;
+    margin-top: 15px;
+    display: block;
+    width: 100%;
+}
+
+.reset-btn:hover {
+    background: linear-gradient(to right, #ff7043, #e53935);
+    transform: translateY(-2px);
+}
+
+.reset-btn:active {
+    transform: translateY(1px);
+}
+
+.particles {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+}
+
+.particle {
+    position: absolute;
+    background: #00bcd4;
+    border-radius: 50%;
+    opacity: 0.7;
+}
+
+@keyframes float {
+    0% { transform: translateY(0); }
+    50% { transform: translateY(-20px); }
+    100% { transform: translateY(0); }
+}
+
+.achievement {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background: rgba(60, 60, 60, 0.9);
+    color: white;
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    transform: translateX(150%);
+    transition: transform 0.5s;
+    z-index: 100;
+    max-width: 300px;
+}
+
+.achievement.show {
+    transform: translateX(0);
+}
+
+.achievement-title {
+    font-weight: bold;
+    color: var(--success);
+    margin-bottom: 5px;
+}
+
+.achievement-text {
+    font-size: 0.9rem;
+}
